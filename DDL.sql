@@ -48,7 +48,7 @@ DROP TABLE IF EXISTS `reservations`;
 CREATE TABLE `reservations` (
   `login` varchar(32) NOT NULL,
   `numero` int(11) NOT NULL,
-  `date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   KEY `login` (`login`),
   KEY `numero` (`numero`),
   CONSTRAINT `reservations_ibfk_1` FOREIGN KEY (`login`) REFERENCES `usagers` (`login`) ON DELETE CASCADE,
@@ -62,6 +62,7 @@ CREATE TABLE `reservations` (
 
 LOCK TABLES `reservations` WRITE;
 /*!40000 ALTER TABLE `reservations` DISABLE KEYS */;
+INSERT INTO `reservations` VALUES ('JBLB',1,'2018-08-11 12:00:00');
 /*!40000 ALTER TABLE `reservations` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -110,6 +111,7 @@ CREATE TABLE `usagers` (
 
 LOCK TABLES `usagers` WRITE;
 /*!40000 ALTER TABLE `usagers` DISABLE KEYS */;
+INSERT INTO `usagers` VALUES ('JBLB','JoeBinne','LesBretelles','123');
 /*!40000 ALTER TABLE `usagers` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -122,4 +124,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2018-08-11 21:32:23
+-- Dump completed on 2018-08-11 22:44:35
