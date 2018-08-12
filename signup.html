@@ -1,23 +1,23 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
     <head>
-        <title>Connexion | Club Sportif</title>
+        <title>Inscription | Club Sportif</title>
     </head>
     <body>
         <h1>Club Sportif</h1>
-        <form method="post" action="login.php">
+        <form method="post" action="signup.php">
             <fieldset>
-                <legend>Connexion</legend>
+                <legend>Inscription</legend>
                 <label>Nom d'usager </label>
                 <input type="text" name="username"/><br/>
                 <label>Mot de passe </label>
                 <input type="password" name="mdp"/><br/>
-                <input type="submit" value="Se connecter" />
+                <label>Nom de famille </label>
+                <input type="text" name="name"/><br/>
+                <label>Pr&eacute;nom </label>
+                <input type="text" name="firstname"/><br/>
+                <input type="submit" value="S'inscrire" />
             </fieldset>
         </form>
-        <p><form action="signup.html">
-            <input type="submit" value="Inscription" />
-        </form>
-        </p>
     </body>
 </html>
