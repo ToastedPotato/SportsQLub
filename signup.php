@@ -39,7 +39,6 @@ if(!$res) {
 echo "<h1>Inscription compl&eacute;t&eacute;e</h1>";
 echo "<p>Usager $username inscrit avec succ&egrave;s</p>";
 echo "<a href=login.html>Retour &agrave; la page d'accueil</a>";
-echo "</body></html>";
     
 // Close connection
 mysqli_close($connect);
