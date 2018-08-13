@@ -1,8 +1,3 @@
-<html>
-<head>
-    <title>Club Sportif</title>
-</head>
-<body>
 <?php 
 
 $username = $_POST['username'];
@@ -15,10 +10,7 @@ if(!$username || !$mdp || !$name || !$firstname) {
 }
 
 // Connect to db
-$connect = mysqli_connect("localhost", "root", "", "fieldRes");
-if ($connect->connect_errno) {
-    displayErrorPage("Failed to connect to DB: (" . $mysqli->connect_errno . ") " . $mysqli->connect_error);
-}
+include ('dbConnect.php');
 
 // Check if login exist in database 
 $res = mysqli_query($connect, "SELECT * FROM usagers WHERE login='$username';");
@@ -53,5 +45,3 @@ function displayErrorPage($message) {
     die();
 }
 ?>
-</body>
-</html>

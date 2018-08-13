@@ -1,8 +1,3 @@
-<html>
-<head>
-    <title>Club Sportif</title>
-</head>
-<body>
 <?php 
 
 $username = $_POST['username'];
@@ -13,15 +8,12 @@ if(!$username || !$mdp) {
 }
 
 // Connect to db
-$connect = mysqli_connect("localhost", "root", "", "fieldRes");
-if ($connect->connect_errno) {
-    displayErrorPage("Failed to connect to DB: (" . $mysqli->connect_errno . ") " . $mysqli->connect_error);
-}
+include ('dbConnect.php');
 
 // Validate login 
 $res = mysqli_query($connect, "SELECT * FROM usagers WHERE login='$username';");
 if(!$res) {
-    displayErrorPage("Echec de query a la database");
+    displayErrorPage("Echec d'interrogation de la base de données");
 }
 elseif(mysqli_num_rows($res) == 0) {
     displayErrorPage("Usager non-existant");
@@ -70,5 +62,3 @@ function displayErrorPage($message) {
     die();
 }
 ?>
-</body>
-</html>
