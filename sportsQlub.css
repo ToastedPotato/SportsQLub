@@ -1,0 +1,15 @@
+td.interact:hover{
+
+}
+
+td.reserved{
+    background-color: red;
+}
+
+td.userRes{
+    background-color: green;
+}
+
+.invisible{
+    display: none;
+}

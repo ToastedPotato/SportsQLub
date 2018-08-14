@@ -1,10 +1,13 @@
-<?php 
+<?php
 
+session_start();
 $username = $_POST['username'];
 $mdp = $_POST['mdp'];
 
 if(!$username || !$mdp) {
-    displayErrorPage("Formulaire incomplet");
+    echo '<script type="text/javascript">alert("Formulaire incomplet");</script>';
+    include('login.html');
+    die();
 }
 
 // Connect to db
@@ -13,36 +16,53 @@ include ('dbConnect.php');
 // Validate login 
 $res = mysqli_query($connect, "SELECT * FROM usagers WHERE login='$username';");
 if(!$res) {
-    displayErrorPage("Echec d'interrogation de la base de données");
+    include('dbClose.php');
+    echo '<script type="text/javascript">alert("Échec d\'interrogation de la base de données");</script>';
+    include('login.html');
+    die();
 }
 elseif(mysqli_num_rows($res) == 0) {
-    displayErrorPage("Usager non-existant");
+    include('dbClose.php');
+    echo '<script type="text/javascript">alert("Usager inexistant");</script>';
+    include('login.html');
+    die();
 }
 
 $user = mysqli_fetch_assoc($res);
 if ($user['motdepasse'] != $mdp) {
-    displayErrorPage("Mauvais mot de passe");
+    include('dbClose.php');
+    echo '<script type="text/javascript">alert("Mot de passe incorrect");</script>';
+    include('login.html');
+    die();
 }
-mysqli_free_result($res);
 
-$nom = $user['nom'];
-$prenom = $user['prenom'];
-echo "<h1>Bienvenue $prenom $nom</h1>";
+$_SESSION['username'] = $username;
+$_SESSION['last_name'] = $user['nom'];
+$_SESSION['first_name'] = $user['prenom'];
+$_SESSION['is_admin'] = false;
+
+mysqli_free_result($res);
 
 // Check if admin
 $res = mysqli_query($connect, "SELECT login FROM admin WHERE login='$username';");
 if(!$res) {
-    displayErrorPage("Echec de query a la database");
+    include('dbClose.php');
+    echo '<script type="text/javascript">alert("Échec d\'interrogation de la base de données");</script>';
+    include('login.html');
+    die();
 }
 elseif(mysqli_num_rows($res) > 0) {
-    displayAdminModule();
+    $_SESSION['is_admin'] = true;
 }
 
+mysqli_free_result($res);
+
+header("Location: fieldInfo.php");
 
 // TODO Display forms
 
 // Close connection
-mysqli_close($connect);
+include('dbClose.php');
 
 function displayAdminModule() {
     echo '<form method="post" action="admin.php">';
@@ -52,13 +72,5 @@ function displayAdminModule() {
     echo '<p><input type="submit" name="available" value="Afficher les terrains disponibles"/></p>';
     echo '</fieldset></form>';
 }
-function displayErrorPage($message) {
-    echo "<h2>Erreur de connexion</h2>";
-    echo "<p>$message</p>";
-    echo "</body></html>";
-    if(isset($connect)){
-        mysqli_close($connect);
-    }
-    die();
-}
+
 ?>
