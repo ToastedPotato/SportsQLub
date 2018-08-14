@@ -1,6 +1,6 @@
 -- MySQL dump 10.13  Distrib 5.7.23, for Linux (x86_64)
 --
--- Host: localhost    Database: fieldRes
+-- Host: localhost    Database: lacombam_fieldRes
 -- ------------------------------------------------------
 -- Server version	5.7.23-0ubuntu0.18.04.1
 
@@ -49,6 +49,7 @@ CREATE TABLE `reservations` (
   `login` varchar(32) NOT NULL,
   `numero` int(11) NOT NULL,
   `date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  UNIQUE KEY `UC_booking` (`numero`,`date`),
   KEY `login` (`login`),
   KEY `numero` (`numero`),
   CONSTRAINT `reservations_ibfk_1` FOREIGN KEY (`login`) REFERENCES `usagers` (`login`) ON DELETE CASCADE,
@@ -122,4 +123,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2018-08-11 22:48:17
+-- Dump completed on 2018-08-14  3:41:27

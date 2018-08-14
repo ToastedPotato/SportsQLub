@@ -1,6 +1,6 @@
 <?php
 
-$booking_query = "SELECT * FROM reservations WHERE date BETWEEN '$day 06:00:00' AND '$day 21:00:00' ORDER BY date, numero";
+$booking_query = "SELECT * FROM reservations WHERE date BETWEEN '$day 06:00:00' AND '$day 21:00:00' ORDER BY date, numero;";
 
 $table_head = "<table><tbody><tr><th></th><th>Terrain 1</th><th>Terrain 2</th><th>Terrain 3</th><th>Terrain 4</th><th>Terrain 5</th></tr>";
 
@@ -33,38 +33,34 @@ if(!$res){
 }else{
     $booking_table = mysqli_fetch_all($res, MYSQLI_BOTH);
     $length = count($booking_table);
-    
-    if($length == 0){
-        $table_rows = $empty_rows;
-    }else{    
-        $index = 0;        
-        $hour = 6;
-         
-        for($i = 0; $i < 15; $i++){
-            $table_rows .= "<tr><th>" . $hour . ":00-" . $hour . ":59</th>";
+        
+    $index = 0;        
+    $hour = 6;
+     
+    for($i = 0; $i < 15; $i++){
+        $table_rows .= "<tr><th>" . $hour . ":00-" . $hour . ":59</th>";
+        
+        for($j = 1; $j <= 5; $j++){
+            $current = $booking_table[$index];
             
-            for($j = 1; $j <= 5; $j++){
-                $current = $booking_table[$index];
-                
-                if($current['numero'] ==  $j && strcmp("" . $hour, date("G", strtotime($current['date']))) == 0){
-                    $class = "reserved";
-                    if(strcmp($current['login'], $_SESSION['username']) == 0){
-                        $class = "userRes";
-                    }
-                    $table_rows .= "<td class=\"$hover $class\"></td>";
-                    if($index < $length-1){$index++;}
-                }else{
-                    $table_rows .= "<td class=\"$hover\"></td>";
+            if($current['numero'] ==  $j && strcmp("" . $hour, date("G", strtotime($current['date']))) == 0){
+                $class = "reserved";
+                if(strcmp($current['login'], $_SESSION['username']) == 0){
+                    $class = "userRes";
                 }
-                
-                if($j == 5){
-                    $table_rows .= '</th>';
-                }
-            }            
-            $hour++;        
-        }
-    
+                $table_rows .= "<td class=\"$hover $class\"></td>";
+                if($index < $length-1){$index++;}
+            }else{
+                $table_rows .= "<td class=\"$hover\"></td>";
+            }
+            
+            if($j == 5){
+                $table_rows .= '</th>';
+            }
+        }            
+        $hour++;        
     }
+    
 }
 
 mysqli_free_result($res);
