@@ -69,7 +69,9 @@ function displayAdminModule() {
     echo '<fieldset><legend>Module administratif</legend>';
     echo '<p><input type="submit" name="players" value="Afficher la liste des joueurs"/></p>';
     echo '<p><input type="submit" name="booked" value="Afficher les terrains r&eacute;serv&eacute;s pour la journ&eacute;e"/></p>';
-    echo '<p><input type="submit" name="available" value="Afficher les terrains disponibles"/></p>';
+    echo '<p>Afficher les terrains disponibles entre <input type="number" name="start" min="6" max="21"> heure et <input type="number" name="end" min="6" max="21"> heure pour la journée ';
+	echo '<input type="submit" name="available" value="Envoyer"/>';
+	echo ' (Veuillez entrer un invervalle d\'heures entre 6 et 21 heure.)</p>';
     echo '</fieldset></form>';
 }
 
