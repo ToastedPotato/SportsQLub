@@ -1,5 +1,26 @@
-td.interact:hover{
+div.navigation {
+    background-color: #222;
+    overflow: hidden;
+}
 
+div.navigation a {
+    float: left;
+    color: #ffffff;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    font-size: 14px;
+}
+
+div.navigation a:hover {
+    background-color: #eee;
+    color: black;
+}
+
+td.interact:hover{
+    border-color: black;
+    border-style: solid;
+    border-width: 5px;
 }
 
 td.reserved{

@@ -46,6 +46,8 @@ echo '<html><head><link rel="stylesheet" type="text/css" href="sportsQlub.css"><
     '<script type="text/javascript" src="sportsQlub.js"></script>' . 
     '<title>Réservations | Club Sportif</title></head><body>'; 
 
+include('navbar.php');
+
 echo "<h1>Disponibilité des terrains en date du $day</h1>";
 
 include('fieldBooking.php');
