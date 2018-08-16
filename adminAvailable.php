@@ -7,6 +7,12 @@ include('dbConnect.php');
 
 include('checkCredentials.php');
 
+//used for updating the nav bar
+$administration = ' current';
+$schedule = '';
+$book = '';
+$history = '';
+
 if (isset($_POST['start']) && isset($_POST['end'])) {
 	//If form is filled
 	$starttime = $_POST['start'];

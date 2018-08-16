@@ -10,7 +10,15 @@ $day = date("Y-m-d");
 
 $hover = "";
 
+//used for updating the nav bar
+$administration = '';
+$schedule = 'class="current"';
+$book = '';
+$history = '';
+
 echo '<html><head><link rel="stylesheet" type="text/css" href="sportsQlub.css"></link>' . 
+    '<script type="text/javascript" src="jquery.js"></script>' . 
+    '<script type="text/javascript" src="sportsQlub.js"></script>' . 
     '<title>Terrains | Club Sportif</title></head><body>'; 
 
 include('navbar.php');

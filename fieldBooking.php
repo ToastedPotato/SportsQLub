@@ -3,7 +3,9 @@
 
 $booking_query = "SELECT * FROM reservations WHERE date BETWEEN '$day 06:00:00' AND '$day 21:00:00' ORDER BY date, numero;";
 
-$table_head = "<table><tbody><tr><th></th><th>Terrain 1</th><th>Terrain 2</th><th>Terrain 3</th><th>Terrain 4</th><th>Terrain 5</th></tr>";
+$table_head = '<table><tbody><tr><th></th><th id="f1">Terrain 1</th>' . 
+    '<th id="f2">Terrain 2</th><th id="f3">Terrain 3</th>' . 
+    '<th id="f4">Terrain 4</th><th id="f5">Terrain 5</th></tr>';
 
 $table_rows = "";
 
@@ -39,24 +41,28 @@ if(!$res){
     $hour = 6;
      
     for($i = 0; $i < 15; $i++){
-        $table_rows .= "<tr><th>" . $hour . ":00-" . $hour . ":59</th>";
+        $table_rows .= '<tr><th id="t' . ($i+6) . '">' . $hour . ":00-" . $hour . ":59</th>";
         
         for($j = 1; $j <= 5; $j++){
-            $current = $booking_table[$index];
-            
-            if($current['numero'] ==  $j && strcmp("" . $hour, date("G", strtotime($current['date']))) == 0){
-                $class = "reserved";
-                if(strcmp($current['login'], $_SESSION['username']) == 0){
-                    $class = "userRes";
+            if($length > 0){
+                $current = $booking_table[$index];
+                
+                if($current['numero'] ==  $j && strcmp("" . $hour, date("G", strtotime($current['date']))) == 0){
+                    $class = "reserved";
+                    if(strcmp($current['login'], $_SESSION['username']) == 0){
+                        $class = "userRes";
+                    }
+                    $table_rows .= "<td class=\"$hover $class\"></td>";
+                    if($index < $length-1){$index++;}
+                }else{
+                    $table_rows .= "<td class=\"$hover\"></td>";
                 }
-                $table_rows .= "<td class=\"$hover $class\"></td>";
-                if($index < $length-1){$index++;}
             }else{
                 $table_rows .= "<td class=\"$hover\"></td>";
             }
             
             if($j == 5){
-                $table_rows .= '</th>';
+                $table_rows .= '</tr>';
             }
         }            
         $hour++;        

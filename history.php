@@ -6,6 +6,12 @@ include('dbConnect.php');
 
 include('checkCredentials.php');
 
+//used for updating the nav bar
+$administration = '';
+$schedule = '';
+$book = '';
+$history = 'class="current"';
+
 if (isset($_POST['searchDate'])) {
 
 $date = $_POST['searchDate'];
@@ -24,13 +30,13 @@ echo '<html><head><link rel="stylesheet" type="text/css" href="sportsQlub.css"><
 
 include('navbar.php');
  
-echo "<h1>Liste des réservations pour la date du $date";
+echo "<h1>Liste des réservations pour la date du $date</h1>";
 if(mysqli_num_rows($res)==0) {
 	echo "<p>Aucune réservation pour cette date</p>";
 } else {
+    echo "<ul>";
 	while($row = mysqli_fetch_assoc($res)) {
-	    echo "</ul>";
-		echo "<li> Terrain #" . $row['numero'] . "réservé par " . $row['login'] . " pour " . $row['date'] . "</li>";
+		echo "<li> Terrain #" . $row['numero'] . " réservé par " . $row['login'] . " pour " . $row['time'] . "</li>";
 	}
 	echo "</ul>";
 }

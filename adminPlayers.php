@@ -7,6 +7,12 @@ include ('dbConnect.php');
 
 include('checkCredentials.php');
 
+//used for updating the nav bar
+$administration = ' current';
+$schedule = '';
+$book = '';
+$history = '';
+
 //Detailled member info
 $res = mysqli_query($connect, "SELECT * FROM usagers;");
 if(!$res) {
