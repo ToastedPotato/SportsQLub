@@ -1,3 +1,4 @@
+<?php if (isset($_GET['source'])) die(highlight_file(__FILE__, 1)); ?>
 <?php
 
 $booking_query = "SELECT * FROM reservations WHERE date BETWEEN '$day 06:00:00' AND '$day 21:00:00' ORDER BY date, numero;";

@@ -1,3 +1,4 @@
+<?php if (isset($_GET['source'])) die(highlight_file(__FILE__, 1)); ?>
 <?php
 
 session_start();
@@ -33,14 +34,13 @@ if(!is_null($booked_hour) && !is_null($booked_field)){
         }else{
             echo '<script type="text/javascript">alert("Échec de mise à jour de la réservation");</script>';
         }
-    }else if($booked_hour == 0 && $booked_field == 0){
+    }else if($booked_hour == 0 && strlen($booked_hour) > 0 && $booked_field == 0 && strlen($booked_field) > 0){
         //if cancelling reservation
         $res = mysqli_query($connect, "DELETE FROM reservations WHERE login = '$username' AND date BETWEEN '$day 06:00:00' AND '$day 21:00:00';");
         if(!$res){
             echo '<script type="text/javascript">alert("Échec de l\'annulation de la réservation");</script>';               
         }
     }   
-    mysqli_free_result($res);
 }
 
 echo '<html><head><link rel="stylesheet" type="text/css" href="sportsQlub.css"></link>' . 
@@ -53,6 +53,10 @@ include('navbar.php');
 echo "<h1>Disponibilité des terrains en date du $day</h1>";
 
 include('fieldBooking.php');
+
+echo '<div class="instruction"><div class="reserved ninja"></div><p>Terrain réservé (non disponible)</p></div>' . 
+    '<div class="instruction"><div class="userRes ninja"></div><p>Votre réservation</p></div>' . 
+    '<p class="instruction">Veuillez cliquer sur une plage horaire vide puis confirmer votre réservation avec le boutton "Confirmer"</p>';
 
 echo '<form method="post" action="reservation.php">' . 
      '<input id="t" class="invisible" type="text" name="time"/>' . 

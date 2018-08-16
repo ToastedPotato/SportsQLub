@@ -1,3 +1,4 @@
+<?php if (isset($_GET['source'])) die(highlight_file(__FILE__, 1)); ?>
 <?php
 
 //si quelqu'un tente d'accéder aux foncitons du site sans s'authentifier

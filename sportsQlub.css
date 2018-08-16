@@ -3,13 +3,18 @@ div.navigation {
     overflow: hidden;
 }
 
+#logout{
+    float: right;
+}
+
 div.navigation a {
     float: left;
     color: #ffffff;
     text-align: center;
-    padding: 14px 16px;
+    padding: 2% 2%;
     text-decoration: none;
-    font-size: 14px;
+    font-size: 12px;
+    font-weight: bold;
 }
 
 div.navigation a:hover {
@@ -23,12 +28,24 @@ td.interact:hover{
     border-width: 5px;
 }
 
-td.reserved{
+.reserved{
     background-color: red;
 }
 
-td.userRes{
+.userRes{
     background-color: green;
+}
+
+.instruction > *{
+    display: inline-block;
+    margin: 0px;
+}
+
+.ninja{
+    min-width: 0.5cm;
+    min-height: 0.5cm;
+    margin-right: 0.5cm;
+    margin-left: 0.5cm;
 }
 
 .invisible{
