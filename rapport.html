@@ -1,0 +1,55 @@
+<!DOCTYPE html 
+    PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"></meta>
+        <title>Rapport TP3 - IFT3225</title>
+    </head>
+    <body>
+        <h1>Rapport TP3 - IFT3225</h1>
+        <p>Par Christophe Apollon-Roy (920403) et Amélie Lacombe Robillard (20016735)</p>
+        <p>17 août 2018</p>
+        <h3>Adresse de l'application sur les serveurs du Diro :</h3>
+        <p><a href="TO UPDATE">TO UPDATE</a></p>
+        <h3>Liens vers les fichiers : </h3>
+		<h4>HTML</h4>
+		<ul><li><a href="signup.html">signup.html</a></li>
+		<li><a href="login.html">login.html</a></li></ul>
+		<h4>CSS</h4>
+		<ul><li><a href="sportsQlub.css">sportsQlub.css</a></li></ul>
+		<h4>Javascript</h4>
+		<ul><li><a href="sportsQlub.js">sportsQlub.js</a></li></ul>
+		<h4>SQL</h4>
+		<ul><li><a href="DDL.sql">DDL.sql</a></li></ul>
+		<h4>PHP</h4>
+        <ul>
+		<li><a href="login.php?source">login.php</a></li>
+		<li><a href="logout.php?source">logout.php</a></li>
+		<li><a href="signup.php?source">signup.php</a></li>
+		<li><a href="adminAvailable.php?source">adminAvailable.php</a></li>
+		<li><a href="adminBooked.php?source">adminBooked.php</a></li>
+		<li><a href="adminPlayers.php?source">adminPlayers.php</a></li>
+		<li><a href="checkCredentials.php?source">checkCredentials.php</a></li>
+		<li><a href="fieldBooking.php?source">fieldBooking.php</a></li>
+		<li><a href="fieldInfo.php?source">fieldInfo.php</a></li>
+		<li><a href="history.php?source">history.php</a></li>
+		<li><a href="navbar.php?source">navbar.php</a></li>
+		<li><a href="reservation.php?source">reservation.php</a></li>
+		<li><a href="dbClose.php?source">dbClose.php</a></li>
+		<li><a href="dbConnect.php?source">dbConnect.php</a></li>	
+        </ul>
+        <h2>Introduction</h2>
+        <p>Dans le cadre de ce projet, nous avons réalisé une application web utilisant la programmation côté client (Javascript et JQuery) et serveur (PHP), ainsi qu’une base de données SQL afin de gérer les réservations de terrains pour un club de sport fictif. </p>
+        <h2>Choix de présentation</h2>
+        <p>Nous avons choisi de structurer notre application de façon à faciliter son utilisation par un usager. Elle comporte une page d’accueil affichant un formulaire de connexion, une page d’inscription accessible via la page d’accueil, et plusieurs pages permettant aux usagers connectés d’accéder aux fonctionnalités de l’application selon leurs privilèges (joueurs ou admin) ainsi que d’afficher les résultats de leurs requêtes. Une barre de navigation facilite la navigation entre les différentes fonctionnalités disponibles. Notre application utilise également des cookies pour garder les informations de login de l’usager tout au long de sa session. </p>
+		<p>À des fins logistiques, nous avons supposé qu’un terrain ne peut être réservé par un joueur que pour une heure pile (ex. : 8h, 9h, 10h…), évitant ainsi que des terrains restent inoccupés en cours de journée à cause de trous de moins d’une heure entre deux réservations. </p>
+		<p>Afin de réduire le risque d’erreurs et de requêtes invalides de la part des usagers, nous avons choisi de restreindre les valeurs des requêtes qu’il est possible d’envoyer au serveur à l’aide de l’interface et de la programmation côté client. Ainsi, la réservation d’un terrain n’est possible que si le terrain est affiché comme disponible dans la table interactive de l’interface usager, et une réservation n’est annulable que si elle est listée parmi les réservations faites par l’usager. Similairement, nous avons utilisé l’élément html <i>input</i> de type <i>number</i> pour le formulaire de requête du panneau d’administration afin de restreindre les heures entrées par l’usager à des valeurs numériques entières comprises dans un intervalle donné (bien que cette décision limite la compatibilité de notre application avec de plus vieux navigateurs). </p>
+
+		<h2>Schéma de la base de données</h2>
+		<p>Notre base de données comprend 4 tables correspondant au schéma entité-association suivant : </p>
+		<img src="schema_bd.png" alt="schema"/>
+        <h2>Apprentissages</h2>
+		<p>Ce projet nous a permis de mettre en pratique les notions de programmation côté client et serveur vues dans le cadre du cours ainsi que de parfaire nos connaissances des langages et framework HTML, Javascript, JQuery et PHP. Il nous a également forcé à réviser les notions de SQL et de modèle entité-association vus dans le cadre du cours de base de données afin de concevoir la base de données de notre application. </p>
+		<p>Développer une application web d’architecture 3 tiers nous a sensibilisé à certains enjeux de développement, comme la délégation des responsabilités entre le client, serveur et la base de données, notamment pour la validation des données et requêtes, ainsi que les possibles failles de sécurité d’une telle application (ex. : mot de passe envoyé en clair, code malicieux envoyé par l’usager, etc.). Nous avons également réalisé l’importance de bien structurer notre code PHP dans un projet de plus grande envergure afin d’éviter la duplication de code. Finalement, nous avons également appris comment mettre en place un serveur local afin de tester localement le code PHP et les requêtes SQL de notre application.</p>
+    </body>
+</html>
