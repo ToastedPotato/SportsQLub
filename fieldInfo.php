@@ -3,6 +3,8 @@
 session_start();
 include('dbConnect.php');
 
+include('checkCredentials.php');
+
 $day = date("Y-m-d");
 
 $hover = "";

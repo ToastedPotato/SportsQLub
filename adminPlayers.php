@@ -4,6 +4,8 @@ session_start();
 // Connect to db
 include ('dbConnect.php');
 
+include('checkCredentials.php');
+
 //Detailled member info
 $res = mysqli_query($connect, "SELECT * FROM usagers;");
 if(!$res) {

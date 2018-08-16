@@ -4,6 +4,8 @@ session_start();
 
 include('dbConnect.php');
 
+include('checkCredentials.php');
+
 // Displays detailled booking info
 $res = mysqli_query($connect, "SELECT reservations.numero, reservations.login, TIME(reservations.date) as time, usagers.nom, usagers.prenom FROM reservations INNER JOIN usagers ON reservations.login = usagers.login  WHERE DATE(date)=CURRENT_DATE ORDER BY numero, date;");
 

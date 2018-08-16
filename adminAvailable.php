@@ -4,6 +4,8 @@ session_start();
 
 include('dbConnect.php');
 
+include('checkCredentials.php');
+
 if (isset($_POST['start']) && isset($_POST['end'])) {
 	//If form is filled
 	$starttime = $_POST['start'];
@@ -29,7 +31,6 @@ if (isset($_POST['start']) && isset($_POST['end'])) {
         '<title>Administration | Club Sportif</title></head><body>'; 
 
     include('navbar.php');
-
      
     echo "<h1>Liste des terrains disponibles entre ".$starttime." et ".$endtime." heure pour la journée</h1>";
 	if(mysqli_num_rows($res)==0) {
@@ -42,6 +43,13 @@ if (isset($_POST['start']) && isset($_POST['end'])) {
 		echo "</ul>";
 	}
 	mysqli_free_result($res);
+	
+	echo '<form method="post" action="adminAvailable.php">';
+    echo '<fieldset><legend>Nouvelle recherche</legend>';
+    echo '<p>Afficher les terrains disponibles entre <input type="number" name="start" min="6" max="21" required="required"> heure et <input type="number" name="end" min="6" max="21" required="required"> heure pour la journée ';
+	echo '<input type="submit" value="Envoyer"/>';
+	echo ' (Veuillez entrer un invervalle d\'heures entre 6 et 21 heure.)</p>';
+    echo '</fieldset></form>';
 	
 } else {
     
