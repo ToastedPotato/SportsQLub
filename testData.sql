@@ -36,16 +36,6 @@ INSERT INTO `reservations` VALUES ('Blob',2,'2018-08-16 16:00:00');
 UNLOCK TABLES;
 
 --
--- Dumping data for table `terrains`
---
-
-LOCK TABLES `terrains` WRITE;
-/*!40000 ALTER TABLE `terrains` DISABLE KEYS */;
-INSERT INTO `terrains` VALUES (1),(2),(3),(4),(5);
-/*!40000 ALTER TABLE `terrains` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
 -- Dumping data for table `usagers`
 --
 
