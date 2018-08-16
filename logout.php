@@ -1,3 +1,4 @@
+<?php if (isset($_GET['source'])) die(highlight_file(__FILE__, 1)); ?>
 <?php
 //http://www.php.net/manual/en/function.session-destroy.php
 //code from the php manual to completely destroy a session
