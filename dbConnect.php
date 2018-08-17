@@ -1,7 +1,7 @@
 <?php if (isset($_GET['source'])) die(highlight_file(__FILE__, 1)); ?>
 <?php
 
-$host = "localhost";
+$host = "www-ens";
 $user = "lacombam";
 $password = "bamp108L";
 $db_name = "lacombam_fieldRes";

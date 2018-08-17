@@ -67,10 +67,9 @@ if(!$res){
         }            
         $hour++;        
     }
-    
+    mysqli_free_result($res);    
 }
 
-mysqli_free_result($res);
 include('dbClose.php');
 
 echo '<html><head></head><body>' . $table_head . $table_rows . $table_tail . '</body></html>';

@@ -5,12 +5,6 @@ session_start();
 $username = $_POST['username'];
 $mdp = $_POST['mdp'];
 
-if(!$username || !$mdp) {
-    echo '<script type="text/javascript">alert("Formulaire incomplet");</script>';
-    include('login.html');
-    die();
-}
-
 // Connect to db
 include ('dbConnect.php');
 

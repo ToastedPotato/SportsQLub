@@ -4,10 +4,6 @@ div.navigation {
     margin-bottom: 2vh;
 }
 
-#logout {
-    float: right;
-}
-
 p#adminTag {
     margin-top: 0px;
     margin-bottom: 0px;
@@ -25,16 +21,16 @@ div.navigation a, .admin {
 }
 
 div.navigation a:hover, div.navigation .admin:hover, .admin:hover > #adminTag {
-    background-color: #dddddd;
+    background-color: #cdcdcb;
     color: #000000;
 }
 
 div.navigation *.current, div.current > p {
-    background-color: #ffffff;
+    background-color: #cfcfb1;
     color: #000000;
-    border-style: dashed;
+    border-style: solid;
     border-width: 3px;
-    border-color: #dddddd;
+    border-color: #0a0a0b;
     padding-top: 12px;
     padding-bottom: 12px;
     box-sizing: border-box;
